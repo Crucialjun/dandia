@@ -1,3 +1,4 @@
+import 'package:dandia/core/constants/app_strings.dart';
 import 'package:dandia/core/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.themeData(Brightness.light),
         darkTheme: AppTheme.themeData(Brightness.dark),
         home: const Scaffold(
-          body: Center(child: Text("Dandia")),
+          body: Center(child: Text(AppStrings.appName)),
         ));
   }
 }
