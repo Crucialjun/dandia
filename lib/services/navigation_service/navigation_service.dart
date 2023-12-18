@@ -1,3 +1,11 @@
-abstract class INavigationService{
+import 'package:dandia/services/navigation_service/i_navigation_service.dart';
+import 'package:flutter/material.dart';
 
+class NavigationService implements INavigationService {
+  static final navigatorKey = GlobalKey<NavigatorState>();
+  @override
+  Future<T?>? navigateToNamed<T extends Object?>(String routeName,
+      {Object? arguments}) {
+    return navigatorKey.currentState?.pushNamed(routeName, arguments: arguments);
+  }
 }

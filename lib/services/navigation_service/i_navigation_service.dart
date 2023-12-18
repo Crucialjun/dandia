@@ -1,4 +1,4 @@
-import 'package:dandia/services/navigation_service/navigation_service.dart';
-
-class NavigationService implements INavigationService{
+abstract class INavigationService {
+  Future<T?>? navigateToNamed<T extends Object?>(String routeName,
+      {Object? arguments});
 }

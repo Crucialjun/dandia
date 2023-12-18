@@ -1,6 +1,6 @@
 import 'package:dandia/core/routes.dart';
 import 'package:dandia/core/themes/app_theme.dart';
-import 'package:dandia/features/auth/sign_up_view.dart';
+import 'package:dandia/features/auth/sign_up/sign_up_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
