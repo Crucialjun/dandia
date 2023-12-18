@@ -8,3 +8,5 @@ sealed class SigninState extends Equatable {
 }
 
 final class SigninInitial extends SigninState {}
+
+final class SigninLoading extends SigninState {}
