@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class NavigationService implements INavigationService {
   static final navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<ScaffoldMessengerState> snackbarKey =
+      GlobalKey<ScaffoldMessengerState>();
   @override
   Future<T?>? navigateToNamed<T extends Object?>(String routeName,
       {Object? arguments}) {

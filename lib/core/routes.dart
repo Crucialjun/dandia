@@ -1,6 +1,8 @@
-import 'package:dandia/features/auth/presentation/sign_in_screen.dart';
+import 'package:dandia/features/auth/presentation/sign_in/bloc/signin_bloc.dart';
+import 'package:dandia/features/auth/presentation/sign_in/sign_in_screen.dart';
 import 'package:dandia/features/auth/presentation/sign_up/bloc/signup_bloc.dart';
-import 'package:dandia/features/auth/sign_up/sign_up_view.dart';
+import 'package:dandia/features/auth/presentation/sign_up/sign_up_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,9 +11,10 @@ class Routes {
     switch (settings.name) {
       case SignUpScreen.routeName:
         return _registerBlocView(
-            view: const SignInView(), bloc: SignupBloc(), settings: settings);
+            view: const SignUpScreen(), bloc: SignupBloc(), settings: settings);
       case SignInView.routeName:
-        return MaterialPageRoute(builder: (_) => const SignInView());
+        return _registerBlocView(
+            view: const SignInView(), bloc: SigninBloc(), settings: settings);
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

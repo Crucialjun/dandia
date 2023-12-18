@@ -1,31 +1,27 @@
 import 'package:dandia/core/constants/app_assets.dart';
-import 'package:dandia/features/auth/presentation/sign_up/bloc/signup_bloc.dart';
+import 'package:dandia/features/auth/presentation/sign_in/bloc/signin_bloc.dart';
 import 'package:dandia/shared/app_input_decoration.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignUpScreen extends StatefulWidget {
-  static const String routeName = '/sign_up';
-  const SignUpScreen({super.key});
+class SignInView extends StatefulWidget {
+  static const String routeName = '/sign_in';
+  const SignInView({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignInViewState extends State<SignInView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _usernameController.dispose();
-    _phoneController.dispose();
 
     super.dispose();
   }
@@ -42,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             children: [
               Image.asset(AppAssets.logo),
               const Text(
-                "Create a User's Account",
+                "Login as a User",
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -51,14 +47,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.all(22),
                 child: Column(children: [
-                  TextField(
-                    controller: _usernameController,
-                    keyboardType: TextInputType.text,
-                    decoration:
-                        const AppInputDecoration(labelString: "User Name"),
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(height: 22.h),
                   TextField(
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -75,38 +63,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     style: const TextStyle(color: Colors.grey),
                   ),
                   SizedBox(height: 22.h),
-                  TextField(
-                    controller: _phoneController,
-                    obscureText: true,
-                    keyboardType: TextInputType.text,
-                    decoration:
-                        const AppInputDecoration(labelString: "Phone Number"),
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                  SizedBox(height: 22.h),
                   ElevatedButton(
-                    onPressed: () {
-                      context.read<SignupBloc>().add(SignupWithEmailEvent(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                            username: _usernameController.text,
-                            phone: _phoneController.text,
-                          ));
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         padding: EdgeInsets.symmetric(
                             horizontal: 80.w, vertical: 10.h),
                         backgroundColor: Colors.purple),
-                    child: const Text("Sign Up"),
+                    child: const Text("Login"),
                   ),
                   SizedBox(height: 22.h),
                   TextButton(
                       onPressed: () {
-                        context.read<SignupBloc>().add(NavigateToSigninEvent());
+                        context.read<SigninBloc>().add(NavigateToSignupEvent());
                       },
                       child: const Text(
-                        "Already have an account? Sign In",
+                        "Don't have an account? Sign Up",
                         style: TextStyle(
                           color: Colors.grey,
                         ),
