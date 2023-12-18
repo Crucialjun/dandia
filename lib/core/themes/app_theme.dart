@@ -13,6 +13,9 @@ class AppTheme {
       
     ),
     useMaterial3: true,
+    scaffoldBackgroundColor: brightness == Brightness.light
+        ? AppColors.lightScaffoldBackgroundColor
+        : AppColors.darkScaffoldBackgroundColor,
     
 
   );
