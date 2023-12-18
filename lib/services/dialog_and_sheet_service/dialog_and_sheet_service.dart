@@ -31,6 +31,7 @@ class DialogAndSheetService extends IDialogAndSheetService {
       useRootNavigator: true,
       useSafeArea: true,
       builder: (context) => child,
+      barrierDismissible: false,
     );
   }
 

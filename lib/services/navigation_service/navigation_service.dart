@@ -8,6 +8,12 @@ class NavigationService implements INavigationService {
   @override
   Future<T?>? navigateToNamed<T extends Object?>(String routeName,
       {Object? arguments}) {
-    return navigatorKey.currentState?.pushNamed(routeName, arguments: arguments);
+    return navigatorKey.currentState
+        ?.pushNamed(routeName, arguments: arguments);
+  }
+
+  @override
+  void back<T extends Object?>([T? result]) {
+    return navigatorKey.currentState?.pop(result);
   }
 }

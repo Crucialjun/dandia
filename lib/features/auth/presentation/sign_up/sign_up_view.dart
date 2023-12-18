@@ -1,6 +1,7 @@
 import 'package:dandia/core/constants/app_assets.dart';
 import 'package:dandia/features/auth/presentation/sign_up/bloc/signup_bloc.dart';
 import 'package:dandia/shared/app_input_decoration.dart';
+import 'package:dandia/shared/app_text_validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,34 +52,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.all(22),
                 child: Column(children: [
-                  TextField(
+                  TextFormField(
                     controller: _usernameController,
+                    validator: (value) {
+                      return AppTextValidators.validateUserName(value);
+                    },
                     keyboardType: TextInputType.text,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration:
                         const AppInputDecoration(labelString: "User Name"),
                     style: const TextStyle(color: Colors.grey),
                   ),
                   SizedBox(height: 22.h),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      return AppTextValidators.validateEmail(value);
+                    },
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: const AppInputDecoration(labelString: "Email"),
                     style: const TextStyle(color: Colors.grey),
                   ),
                   SizedBox(height: 22.h),
-                  TextField(
+                  TextFormField(
+                    validator: (value) {
+                      return AppTextValidators.validatePassword(value);
+                    },
                     controller: _passwordController,
                     obscureText: true,
                     keyboardType: TextInputType.text,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration:
                         const AppInputDecoration(labelString: "Password"),
                     style: const TextStyle(color: Colors.grey),
                   ),
                   SizedBox(height: 22.h),
-                  TextField(
+                  TextFormField(
                     controller: _phoneController,
                     obscureText: true,
                     keyboardType: TextInputType.text,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration:
                         const AppInputDecoration(labelString: "Phone Number"),
                     style: const TextStyle(color: Colors.grey),
@@ -86,12 +100,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   SizedBox(height: 22.h),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<SignupBloc>().add(SignupWithEmailEvent(
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                            username: _usernameController.text,
-                            phone: _phoneController.text,
-                          ));
+                      if (_formKey.currentState!.validate()) {
+                        context.read<SignupBloc>().add(SignupWithEmailEvent(
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                              username: _usernameController.text,
+                              phone: _phoneController.text,
+                            ));
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,

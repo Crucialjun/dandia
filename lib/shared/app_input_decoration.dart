@@ -12,4 +12,9 @@ class AppInputDecoration extends InputDecoration {
   TextStyle? get labelStyle => const TextStyle(
         fontSize: 14,
       );
+  @override
+
+  TextStyle? get errorStyle => const TextStyle(
+        color: Colors.red,
+      );
 }
