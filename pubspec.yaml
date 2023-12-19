@@ -47,6 +47,7 @@ dependencies:
   firebase_auth: ^4.15.3
   dartz: ^0.10.1
   firebase_database: ^10.3.8
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_test:

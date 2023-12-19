@@ -39,7 +39,11 @@ class DialogAndSheetService extends IDialogAndSheetService {
   void showSnackBar<T>({required String message}) async {
     snackbarKey.currentState?.showSnackBar(
       SnackBar(
-        content: Text(message),
+        backgroundColor: Colors.red,
+        content: Text(
+          message,
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
