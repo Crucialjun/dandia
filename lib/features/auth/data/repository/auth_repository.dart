@@ -16,7 +16,7 @@ class AuthRepository implements IAUthRepository {
   }
 
   @override
-  Future<Either<Failure, void>> addNewUserToDB(
+  Future<Either<Failure, AppUserModel>> addNewUserToDB(
       {required String uid,
       required String email,
       required String name,

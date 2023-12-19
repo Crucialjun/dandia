@@ -50,11 +50,11 @@ class AppUserModel extends HiveObject with EquatableMixin {
   //from map
   factory AppUserModel.fromMap(Map<String, dynamic> map) {
     return AppUserModel(
-      id: map['id'],
-      email: map['email'],
-      username: map['username'],
-      phone: map['phone'],
-      blockStatus: map['blockStatus'],
+      id: map['id'] ?? "",
+      email: map['email'] ?? "",
+      username: map['username'] ?? "",
+      phone: map['phone'] ?? "",
+      blockStatus: map['blockStatus'] ?? false,
     );
   }
 
@@ -68,4 +68,11 @@ class AppUserModel extends HiveObject with EquatableMixin {
       'blockStatus': blockStatus,
     };
   }
+
+  //from json
+  factory AppUserModel.fromJson(String source) =>
+      AppUserModel.fromMap(source as Map<String, dynamic>);
+
+  //to json
+  String toJson() => toMap().toString();
 }

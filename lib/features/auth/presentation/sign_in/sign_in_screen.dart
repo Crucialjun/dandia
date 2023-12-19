@@ -64,7 +64,11 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   SizedBox(height: 22.h),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<SigninBloc>().add(SigninWithEmailEvent(
+                          email: _emailController.text,
+                          password: _passwordController.text));
+                    },
                     style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
                         padding: EdgeInsets.symmetric(

@@ -8,6 +8,8 @@ import 'package:dandia/services/firebase_auth_service/firebase_auth_service.dart
 import 'package:dandia/services/firebase_auth_service/i_firebase_auth_service.dart';
 import 'package:dandia/services/firebase_database_service/firebase_database_service.dart';
 import 'package:dandia/services/firebase_database_service/i_firebase_database_service.dart';
+import 'package:dandia/services/local_storage_service/i_local_storage_service.dart';
+import 'package:dandia/services/local_storage_service/local_storage_service.dart';
 import 'package:dandia/services/navigation_service/i_navigation_service.dart';
 import 'package:dandia/services/navigation_service/navigation_service.dart';
 import 'package:dandia/services/network_service/i_network_service.dart';
@@ -29,4 +31,6 @@ Future setupLocator() async {
   locator.registerLazySingleton<IAuthRemoteDataSource>(
       () => AuthRemoteDataSource());
   locator.registerLazySingleton<IAUthRepository>(() => AuthRepository());
+  locator
+      .registerLazySingleton<ILocalStorageService>(() => LocalStorageService());
 }

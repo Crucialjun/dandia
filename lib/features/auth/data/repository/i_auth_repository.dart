@@ -9,7 +9,7 @@ abstract class IAUthRepository {
 
   Future<Either<Failure, User?>> signInWithEmailAndPassword(
       {required String email, required String password});
-  Future<Either<Failure, void>> addNewUserToDB(
+  Future<Either<Failure, AppUserModel>> addNewUserToDB(
       {required String uid,
       required String email,
       required String name,
