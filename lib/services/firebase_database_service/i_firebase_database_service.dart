@@ -1,4 +1,5 @@
 import 'package:dandia/core/failure.dart';
+import 'package:dandia/core/models/app_user_model.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class IFirebaseDatabaseService {
@@ -8,4 +9,6 @@ abstract class IFirebaseDatabaseService {
       required String name,
       required String phone,
       required bool blockStatus});
+
+  Future<Either<Failure, AppUserModel?>> retrieveUser({required String uid});
 }

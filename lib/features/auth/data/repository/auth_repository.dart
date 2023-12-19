@@ -1,5 +1,6 @@
 import 'package:dandia/core/failure.dart';
 import 'package:dandia/core/locator.dart';
+import 'package:dandia/core/models/app_user_model.dart';
 import 'package:dandia/features/auth/data/data_sources/remote_data_source/i_auth_remote_data_source.dart';
 import 'package:dandia/features/auth/data/repository/i_auth_repository.dart';
 import 'package:dartz/dartz.dart';
@@ -22,6 +23,27 @@ class AuthRepository implements IAUthRepository {
       required String phone,
       required bool blockStatus}) async {
     return await _dataSOurce.addNewUserToDB(
-        uid: uid, email: email, name: name, phone: phone, blockStatus: blockStatus);
+        uid: uid,
+        email: email,
+        name: name,
+        phone: phone,
+        blockStatus: blockStatus);
+  }
+
+  @override
+  Future<Either<Failure, User?>> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    return await _dataSOurce.signInWithEmailAndPassword(
+        email: email, password: password);
+  }
+
+  @override
+  Future<Either<Failure, AppUserModel?>> retrieveUser({required String uid}) async {
+    return await _dataSOurce.retrieveUser(uid: uid);
+  }
+
+  @override
+  Future<Either<Failure, void>> logout() async {
+    return _dataSOurce.logout();
   }
 }

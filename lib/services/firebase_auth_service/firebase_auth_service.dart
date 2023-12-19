@@ -20,6 +20,38 @@ class FirebaseAuthService implements IFirebaseAuthService {
         return left(const Failure('The account already exists for that email'));
       }
       return left(Failure(e.message ?? 'Something went wrong'));
+    } catch (e) {
+      return left(Failure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, User?>> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    try {
+      final userCredential = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
+      return right(userCredential.user);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        return left(const Failure('No user found for that email'));
+      } else if (e.code == 'wrong-password') {
+        return left(const Failure('Wrong password provided for that user'));
+      }
+      return left(Failure(e.message ?? 'Something went wrong'));
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+  
+  @override
+  Future<Either<Failure, void>> logout() async{
+    try {
+      return _firebaseAuth.signOut().then((value) => right(null));
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
+  
 }
