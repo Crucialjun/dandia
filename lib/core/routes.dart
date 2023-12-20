@@ -2,6 +2,7 @@ import 'package:dandia/features/auth/presentation/sign_in/bloc/signin_bloc.dart'
 import 'package:dandia/features/auth/presentation/sign_in/sign_in_screen.dart';
 import 'package:dandia/features/auth/presentation/sign_up/bloc/signup_bloc.dart';
 import 'package:dandia/features/auth/presentation/sign_up/sign_up_view.dart';
+import 'package:dandia/features/home/presentation/bloc/home_bloc.dart';
 import 'package:dandia/features/home/presentation/home_view.dart';
 
 import 'package:flutter/material.dart';
@@ -17,7 +18,9 @@ class Routes {
         return _registerBlocView(
             view: const SignInView(), bloc: SigninBloc(), settings: settings);
       case HomeView.routeName:
-        return MaterialPageRoute(builder: (_) => const HomeView());
+        return _registerBlocView(
+            view: const HomeView(), bloc: HomeBloc(), settings: settings);
+
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
