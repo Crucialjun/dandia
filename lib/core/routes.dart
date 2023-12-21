@@ -1,3 +1,4 @@
+import 'package:dandia/core/models/app_user_model.dart';
 import 'package:dandia/features/auth/presentation/sign_in/bloc/signin_bloc.dart';
 import 'package:dandia/features/auth/presentation/sign_in/sign_in_screen.dart';
 import 'package:dandia/features/auth/presentation/sign_up/bloc/signup_bloc.dart';
@@ -18,8 +19,10 @@ class Routes {
         return _registerBlocView(
             view: const SignInView(), bloc: SigninBloc(), settings: settings);
       case HomeView.routeName:
+      final AppUserModel user  = settings.arguments as AppUserModel;
         return _registerBlocView(
-            view: const HomeView(), bloc: HomeBloc(), settings: settings);
+           
+            view:  HomeView(user:user ,), bloc: HomeBloc(), settings: settings);
 
       default:
         return MaterialPageRoute(

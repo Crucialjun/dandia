@@ -52,7 +52,7 @@ class AppUserModel extends HiveObject with EquatableMixin {
     return AppUserModel(
       id: map['id'] ?? "",
       email: map['email'] ?? "",
-      username: map['username'] ?? "",
+      username: map['name'] ?? "",
       phone: map['phone'] ?? "",
       blockStatus: map['blockStatus'] ?? false,
     );
@@ -63,7 +63,7 @@ class AppUserModel extends HiveObject with EquatableMixin {
     return {
       'id': id,
       'email': email,
-      'username': username,
+      'name': username,
       'phone': phone,
       'blockStatus': blockStatus,
     };

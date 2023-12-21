@@ -1,14 +1,18 @@
 import 'dart:async';
 
 import 'package:dandia/core/constants/app_assets.dart';
+import 'package:dandia/core/models/app_user_model.dart';
 import 'package:dandia/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class HomeView extends StatefulWidget {
   static const routeName = '/home-view';
-  const HomeView({super.key});
+
+  final AppUserModel user;
+  const HomeView({super.key, required this.user});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -43,6 +47,76 @@ class _HomeViewState extends State<HomeView> {
           return Scaffold(
               appBar: AppBar(
                 title: const Text('HomeView'),
+              ),
+              drawer: Drawer(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    DrawerHeader(
+                      decoration: const BoxDecoration(
+                        color: Colors.black,
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.account_circle,
+                            size: 50.r,
+                            color: Colors.white,
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                widget.user.username,
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const Text(
+                                'Profile',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                        icon: const Icon(
+                          Icons.info,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {},
+                      ),
+                      title: const Text('About'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                        icon: const Icon(
+                          Icons.logout,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {},
+                      ),
+                      title: const Text('Logout'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                  ],
+                ),
               ),
               body: Stack(children: [
                 GoogleMap(

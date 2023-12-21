@@ -74,7 +74,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
                 boxName: HiveBoxNames.userBox,
                 key: HiveStorageKeys.userProfile,
                 value: r);
-            _navigation.navigateToNamed(HomeView.routeName);
+            _navigation.navigateToNamed(HomeView.routeName,arguments: r);
           });
         });
       } else {
