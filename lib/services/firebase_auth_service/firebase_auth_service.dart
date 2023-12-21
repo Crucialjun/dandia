@@ -43,9 +43,9 @@ class FirebaseAuthService implements IFirebaseAuthService {
       return left(Failure(e.toString()));
     }
   }
-  
+
   @override
-  Future<Either<Failure, void>> logout() async{
+  Future<Either<Failure, void>> logout() async {
     try {
       return _firebaseAuth.signOut().then((value) => right(null));
     } catch (e) {
@@ -53,5 +53,16 @@ class FirebaseAuthService implements IFirebaseAuthService {
     }
   }
 
-  
+  @override
+  Future<bool> currentUserLoginStatus() async {
+    try {
+      return _firebaseAuth
+          .authStateChanges()
+          .map((event) => event != null)
+          .first
+          .then((value) => value);
+    } catch (e) {
+      return false;
+    }
+  }
 }

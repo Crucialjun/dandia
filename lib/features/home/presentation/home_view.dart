@@ -111,8 +111,7 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       title: const Text('Logout'),
                       onTap: () {
-                        // Update the state of the app.
-                        // ...
+                        context.read<HomeBloc>().add(LogoutEvent());
                       },
                     ),
                   ],

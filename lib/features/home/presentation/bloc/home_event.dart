@@ -10,3 +10,7 @@ sealed class HomeEvent extends Equatable {
 class HomeInitEvent extends HomeEvent {
   
 }
+
+class LogoutEvent extends HomeEvent {
+  
+}
