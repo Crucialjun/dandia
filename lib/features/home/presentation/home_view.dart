@@ -119,6 +119,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               body: Stack(children: [
                 GoogleMap(
+                  padding: EdgeInsets.only(bottom: 120.h),
                   mapType: MapType.normal,
                   myLocationButtonEnabled: true,
                   initialCameraPosition: CameraPosition(
@@ -131,6 +132,45 @@ class _HomeViewState extends State<HomeView> {
                     controller.setMapStyle(mapStyle);
                   },
                 ),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: -80.h,
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8.r),
+                        shape: BoxShape.rectangle,
+                      ),
+                      height: 276.h,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey,
+                                    shape: const CircleBorder(),
+                                    padding: const EdgeInsets.all(24)),
+                                onPressed: () {},
+                                child: Icon(Icons.search,
+                                    color: Colors.white, size: 25.r)),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey,
+                                    shape: const CircleBorder(),
+                                    padding: const EdgeInsets.all(24)),
+                                onPressed: () {},
+                                child: Icon(Icons.home,
+                                    color: Colors.white, size: 25.r)),
+                            ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.grey,
+                                    shape: const CircleBorder(),
+                                    padding: const EdgeInsets.all(24)),
+                                onPressed: () {},
+                                child: Icon(Icons.work,
+                                    color: Colors.white, size: 25.r))
+                          ])),
+                )
               ]));
         }
         return Scaffold(
